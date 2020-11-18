@@ -1,0 +1,13 @@
+MMR: 7683,Hours: 9993, Name: Valentin,Games: 6044,Wins: 0
+MMR: 2639,Hours: 90518, Name: Valentin,Games: 4232,Wins: 0
+MMR: 1678,Hours: 29549, Name: Valentin,Games: 2039,Wins: 0
+MMR: 4381,Hours: 7613, Name: Valentin,Games: 802,Wins: 0
+MMR: 4808,Hours: 31901, Name: Valentin,Games: 2258,Wins: 1170
+MMR: 3255,Hours: 52662, Name: Valentin,Games: 1571,Wins: 795
+MMR: 5681,Hours: 98381, Name: Valentin,Games: 6539,Wins: 3962
+MMR: 3322,Hours: 56337, Name: DoterTestoviy71,Games: 5607,Wins: 1060
+MMR: 2371,Hours: 34616, Name: DoterTestoviy81,Games: 5603,Wins: 1331
+MMR: 9140,Hours: 95178, Name: DoterTestoviy91,Games: 3063,Wins: 2285
+MMR: 1173,Hours: 46799, Name: DoterTestoviy11,Games: 4675,Wins: 4288
+MMR: 5618,Hours: 76891, Name: DoterTestoviy12,Games: 7401,Wins: 641
+MMR: 4069,Hours: 58244, Name: DoterTestoviy13,Games: 211,Wins: 49

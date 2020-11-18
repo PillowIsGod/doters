@@ -1,0 +1,37 @@
+<doters>
+  <doter>
+    <mmr>1040</mmr>
+    <hours>48346</hours>
+    <name>DoterTestoviy 1</name>
+    <games>2852</games>
+    <wins>2478</wins>
+  </doter>
+  <doter>
+    <mmr>573</mmr>
+    <hours>38893</hours>
+    <name>DoterTestoviy 2</name>
+    <games>3713</games>
+    <wins>2443</wins>
+  </doter>
+  <doter>
+    <mmr>6182</mmr>
+    <hours>14717</hours>
+    <name>DoterTestoviy 3</name>
+    <games>742</games>
+    <wins>142</wins>
+  </doter>
+  <doter>
+    <mmr>9598</mmr>
+    <hours>68991</hours>
+    <name>DoterTestoviy 4</name>
+    <games>9221</games>
+    <wins>755</wins>
+  </doter>
+  <doter>
+    <mmr>155</mmr>
+    <hours>28527</hours>
+    <name>DoterTestoviy 5</name>
+    <games>3636</games>
+    <wins>3463</wins>
+  </doter>
+</doters>
