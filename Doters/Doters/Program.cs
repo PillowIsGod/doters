@@ -48,7 +48,7 @@ namespace Doters
             List<string> lines = dotersProcessing.GetAllFileLines();
 
             List<Doter> allCurrentDoters = DoterStorage.GetDoters();
-
+            
             Doter doter = new Doter(lines.Count + 1);
 
 
@@ -189,7 +189,7 @@ namespace Doters
                     caseAnswer = allCurrentDoters[index].DoterEdit(index, name1, mmr1, wins1, hours1);
                     break;
                 case 13:
-                    xmlProcessing.TransferDataFromTXTtoXML(lines);
+                    xmlProcessing.TransferDotersToXML();
                     break;
 
                 default:
@@ -251,6 +251,12 @@ namespace Doters
 "Заполнить файл указанным количеством дотеров > 0 < 1000", "Очистить дотеров", "Отсортировать всех дотеров",
 "Редактировать дотера", "All data to XML");
             }
+            int generalchoice = GetUserResponse("What would you like to use as a data container: \n" +
+"1. Txt file 2. XML file", true, 1, 2, "Please, choose one of the options.");
+            if (generalchoice == 2)
+            {
+                DoterStorage.XmlOrTXT = true;
+            }
             if (menuList == null || menuList.Count == 0)
             {
                 ToLog("Bratishka - file is empty or not exist");
@@ -263,6 +269,7 @@ namespace Doters
                 Doter[] randomDoters = DoterStorage.CreateRandomDomers(10).ToArray();
                 DoterStorage.AddDoter(false, randomDoters);
             }
+
             int choice = 0;
             while (choice != -1)
             {

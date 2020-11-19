@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Xml;
 
 namespace Doters
 {
@@ -8,12 +9,17 @@ namespace Doters
     {
         private static string _storageFilePath { get; set; }
         private static TxtFileProcessing _txtfileprocessing;
+        private static XMLDoter _xmlfileProcessing;
+        public static bool XmlOrTXT = false;
+        private static string _xmlfilepath { get; set; }
 
         static DoterStorage()
         {
             _storageFilePath = @"C:\Users\Zhenya\source\repos\Doters\doters\Doters\Doters\doters.txt";
 
             _txtfileprocessing = new TxtFileProcessing(_storageFilePath);
+            _xmlfilepath = @"C:\Users\Zhenya\source\repos\Doters\doters\Doters\Doters\doters.xml";
+            _xmlfileProcessing = new XMLDoter(_xmlfilepath);
         }
 
 
@@ -35,13 +41,26 @@ namespace Doters
 
         public static void AddDoter(bool rewrite = false, params Doter[] doters)
         {
-            List<string> lines = new List<string>();
-            foreach (var doter in doters)
-            {
-                lines.Add(doter.DoterCharacteristics());
 
+            List<string> lines = new List<string>();
+            if (XmlOrTXT == false)
+            {
+                foreach (var doter in doters)
+                {
+                    lines.Add(doter.DoterCharacteristics());
+
+                }
+                _txtfileprocessing.AppendFile(rewrite, lines.ToArray());
             }
-            _txtfileprocessing.AppendFile(rewrite, lines.ToArray());
+            if (XmlOrTXT)
+            {
+                List<Doter> lines1 = new List<Doter>();
+                foreach (var doter in doters)
+                {
+                    lines1.Add(doter);                  
+                }
+                _xmlfileProcessing.DoterAddToXml(rewrite, lines1.ToArray());
+            }
         }
 
         public static void RemoveDoter(params Doter[] doters)
@@ -235,11 +254,19 @@ namespace Doters
         public static List<Doter> GetDoters()
         {
             List<Doter> doters = new List<Doter>();
-
-            TxtFileProcessing txtfileprocessing = new TxtFileProcessing(_storageFilePath);
-            var rows = txtfileprocessing.GetAllFileLines();
-
+            List<string> rows = new List<string>();
+            if (XmlOrTXT == false)
+            {
+                TxtFileProcessing txtfileprocessing = new TxtFileProcessing(_storageFilePath);
+                rows = txtfileprocessing.GetAllFileLines();
+            }
+            else if (XmlOrTXT)
+            {
+                XMLDoter xmldoter = new XMLDoter(_xmlfilepath);
+                rows = xmldoter.GetLinesFromXML();
+            }
             foreach (var item in rows)
+
             {
                 var arrayvalues = item.Split(',');
                 doters.Add(new Doter(arrayvalues));
