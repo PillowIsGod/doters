@@ -1,0 +1,25 @@
+{
+  "doters": [
+      {
+        "games": 1000,
+        "hours": 1000,
+        "mmr": 5000,
+        "name": "Valentin",
+        "wins": 500
+      },
+      {
+        "games": 500,
+        "hours": 500,
+        "mmr": 1000,
+        "name": "Seryoga",
+        "wins": 349
+      },
+      {
+        "games": 1000,
+        "hours": 500,
+        "mmr": 1500,
+        "name": "Vasya",
+        "wins": 329
+      }
+  ]
+}

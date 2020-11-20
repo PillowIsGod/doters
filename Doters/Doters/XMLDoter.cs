@@ -6,9 +6,9 @@ using System.Xml.Linq;
 
 namespace Doters
 {
-    public class XMLDoter
+    public class XMLDoter : Storages.Storage
     {
-        public readonly string FilePath;
+     
 
 
 
@@ -41,7 +41,7 @@ namespace Doters
                 winsElem.AppendChild(winsText);
             return xmlDoter;
         }
-        public void DoterAddToXml(bool trunc = false, params Doter[] doters)
+        public override void Append(bool trunc = false, params Doter[] doters)
         {
             XmlDocument xdoc = new XmlDocument();
             if (trunc == false)
@@ -67,7 +67,8 @@ namespace Doters
                 xdoc.Save(FilePath);
             }
         }
-        public List<string> GetLinesFromXML()
+
+        public override List<string> GetAllFileLines()
         {
             List<string> lines = new List<string>();
             List<string> linesToOutput = new List<string>();
@@ -118,10 +119,13 @@ namespace Doters
             }
             xdoc.Save(FilePath);
         }
-        public XMLDoter(string filePath)
+
+
+        public XMLDoter(string filePath) : base(filePath)
         {
-            FilePath = filePath;
+          
 
         }
     }
 }
+    

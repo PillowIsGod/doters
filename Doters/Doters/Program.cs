@@ -191,7 +191,9 @@ namespace Doters
                 case 13:
                     xmlProcessing.TransferDotersToXML();
                     break;
-
+                case 14:
+                    jsonProcessing.DataToJson();
+                    break;
                 default:
                     caseAnswer = ("Wrong choice, please try again.");
                     break;
@@ -232,31 +234,46 @@ namespace Doters
         static TxtFileProcessing menuItemsPath;
         static TxtFileProcessing dotersProcessing;
         static XMLDoter xmlProcessing;
+        static JsonFile jsonProcessing;
         public static void Main(string[] args)
         {
             string dotersPath = @"C:\Users\Zhenya\source\repos\Doters\doters\Doters\Doters\doters.txt";
             string pathMenu = @"C:\Users\Zhenya\source\repos\Doters\doters\Doters\Doters\Menu.txt";
             string xmlPath = @"C:\Users\Zhenya\source\repos\Doters\doters\Doters\Doters\doters.xml";
+            string jsonPath = @"C:\Users\Zhenya\source\repos\Doters\doters\Doters\Doters\JsonContent.json";
             xmlProcessing = new XMLDoter(xmlPath);
             menuItemsPath = new TxtFileProcessing(pathMenu);
             dotersProcessing = new TxtFileProcessing(dotersPath);
+            jsonProcessing = new JsonFile(jsonPath);
             Console.OutputEncoding = System.Text.Encoding.UTF8;
             List<string> menuList = menuItemsPath.GetAllFileLines();
             if (!File.Exists(pathMenu))
             {
-                menuItemsPath.AppendFile(true,
+                menuItemsPath.Append(true,
                     "Посмотреть дотеров", "Добавить дотера", "Удалить дотера", "Проверить дотера(Гей или натурал)",
 "Показать кол - во полученного MMR в час", "Показать винрейт",
 "Показать полную статистику определенного", "Показать полную статистику всех дотеров",
 "Заполнить файл указанным количеством дотеров > 0 < 1000", "Очистить дотеров", "Отсортировать всех дотеров",
-"Редактировать дотера", "All data to XML");
+"Редактировать дотера", "All data to XML", "All data to JSon");
             }
             int generalchoice = GetUserResponse("What would you like to use as a data container: \n" +
 "1. Txt file 2. XML file", true, 1, 2, "Please, choose one of the options.");
-            if (generalchoice == 2)
+
+
+            switch (generalchoice)
             {
-                DoterStorage.XmlOrTXT = true;
+                case 1:
+                    DoterStorage.DataStorage = StorageEnum.Txt;
+                    break;
+                case 2:
+                    DoterStorage.DataStorage = StorageEnum.XML;
+                    break;
+                case 3:
+                    DoterStorage.DataStorage = StorageEnum.Json;
+                    break;
             }
+
+
             if (menuList == null || menuList.Count == 0)
             {
                 ToLog("Bratishka - file is empty or not exist");
@@ -273,7 +290,7 @@ namespace Doters
             int choice = 0;
             while (choice != -1)
             {
-                var usersNumberChoice = GetUserResponse("Please, choose the element of the menu.", true, 1, 13, "В меню нет такого пункта.");
+                var usersNumberChoice = GetUserResponse("Please, choose the element of the menu.", true, 1, 14, "В меню нет такого пункта.");
                 Console.Clear();
                 ToLog(generatedMenu);
                 var answerToUser = CasesToUsersChoice(usersNumberChoice);

@@ -58,7 +58,7 @@ namespace Doters
             {
                 lines.Add(item.DoterCharacteristics());
             }
-            fp.AppendFile(true, lines.ToArray());
+            fp.Append(true, lines.ToArray());
             return "Doter number " + index + " has been edited.";
 
         }

@@ -5,18 +5,16 @@ using System.Text;
 
 namespace Doters
 {
-    class TxtFileProcessing
+    public class TxtFileProcessing : Storages.Storage
     {
        
 
-
-
-        public readonly string FilePath;
-        public TxtFileProcessing(string filePath)
+        public TxtFileProcessing(string filePath) : base(filePath)
         {
-            FilePath = filePath;
+
         }
-        public List<string> GetAllFileLines()
+
+        public override List<string> GetAllFileLines()
         {
             List<string> lines = new List<string>();
             if (!File.Exists(FilePath))
@@ -37,6 +35,34 @@ namespace Doters
             }
             return lines;
         }
+        public override void Append(bool truncate = false, params Doter[] linesToAppend)
+        {
+            List<string> rows = new List<string>();
+            foreach (var item in linesToAppend)
+            {
+                rows.Add(item.DoterCharacteristics());
+            }
+
+            Append(truncate, rows.ToArray());
+        }
+
+        public void Append(bool truncate = false, params string[] linesToAppend)
+        {
+            FileMode fm = FileMode.Append;
+            if (truncate)
+            {
+                fm = FileMode.Truncate;
+            }
+            using (FileStream fs = new FileStream(FilePath, fm))
+            using (StreamWriter write = new StreamWriter(fs))
+            {
+                foreach (var item in linesToAppend)
+                {
+                    write.WriteLine(item);
+                }
+            }
+        }
+
         public string LineToDeleteByNumber(int affirmation, int choiceofIntMMR, int number,string name)
         {
             List<string> lines = GetAllFileLines();
@@ -50,7 +76,7 @@ namespace Doters
                         return str;
                     }
                     lines.RemoveAt(number);
-                    AppendFile(true, lines.ToArray());                   
+                    Append(true, lines.ToArray());                   
                     return "Doter number " + (number + 1) + " has been deleted.";
                 }
                 else if (choiceofIntMMR == 2)
@@ -61,7 +87,7 @@ namespace Doters
                         if (lines[i].Contains(number1))
                         {
                             lines.Remove(lines[i]);
-                            AppendFile(true, lines.ToArray());
+                            Append(true, lines.ToArray());
                             return "Doter number " + (i + 1) + " has been deleted.";
                         }
                     }
@@ -73,7 +99,7 @@ namespace Doters
                         if (lines[i].Contains(name))
                         {
                             lines.Remove(lines[i]);
-                            AppendFile(true, lines.ToArray());
+                            Append(true, lines.ToArray());
                             return "Doter number " + (i + 1) + " has been deleted.";
                         }
                     }
@@ -99,28 +125,12 @@ namespace Doters
             }
             return lines[index];
         }
-        public void AppendFile(bool truncate = false, params string[] linesToAppend)
-        {
-            FileMode fm = FileMode.Append;
-            if (truncate)
-            {
-                fm = FileMode.Truncate;
-            }
-            using (FileStream fs = new FileStream(FilePath, fm))
-            using (StreamWriter write = new StreamWriter(fs))
-            {
-                foreach (var item in linesToAppend)
-                {
-                    write.WriteLine(item);
-                }
-            }
-        }
         public string DeleteAllLinesFromFile(int affirmation)
         {
             List<string> lines = new List<string>();
             if (affirmation == 1)
             {
-                AppendFile(true, lines.ToArray());   
+                Append(true, lines.ToArray());   
                 return "All doters were removed from file";
             }
             else
@@ -138,7 +148,7 @@ namespace Doters
                 lines.Add(doter.DoterCharacteristics());
 
             }
-                AppendFile(false, lines.ToArray());
+                Append(false, lines.ToArray());
 
           
             return amount+" doters were added to the file.";

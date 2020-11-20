@@ -7,7 +7,9 @@ C:\Users\Zhenya\source\repos\Doters\doters\Doters\Doters\bin\Debug\netcoreapp3.1
 C:\Users\Zhenya\source\repos\Doters\doters\Doters\Doters\obj\Debug\netcoreapp3.1\Doters.csprojAssemblyReference.cache
 C:\Users\Zhenya\source\repos\Doters\doters\Doters\Doters\obj\Debug\netcoreapp3.1\Doters.AssemblyInfoInputs.cache
 C:\Users\Zhenya\source\repos\Doters\doters\Doters\Doters\obj\Debug\netcoreapp3.1\Doters.AssemblyInfo.cs
-C:\Users\Zhenya\source\repos\Doters\doters\Doters\Doters\obj\Debug\netcoreapp3.1\Doters.csproj.CoreCompileInputs.cache
 C:\Users\Zhenya\source\repos\Doters\doters\Doters\Doters\obj\Debug\netcoreapp3.1\Doters.dll
 C:\Users\Zhenya\source\repos\Doters\doters\Doters\Doters\obj\Debug\netcoreapp3.1\Doters.pdb
 C:\Users\Zhenya\source\repos\Doters\doters\Doters\Doters\obj\Debug\netcoreapp3.1\Doters.genruntimeconfig.cache
+C:\Users\Zhenya\source\repos\Doters\doters\Doters\Doters\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\Zhenya\source\repos\Doters\doters\Doters\Doters\obj\Debug\netcoreapp3.1\Doters.csproj.CoreCompileInputs.cache
+C:\Users\Zhenya\source\repos\Doters\doters\Doters\Doters\obj\Debug\netcoreapp3.1\Doters.csproj.CopyComplete

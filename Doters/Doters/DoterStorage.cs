@@ -8,18 +8,52 @@ namespace Doters
     public static class DoterStorage
     {
         private static string _storageFilePath { get; set; }
-        private static TxtFileProcessing _txtfileprocessing;
-        private static XMLDoter _xmlfileProcessing;
-        public static bool XmlOrTXT = false;
+        //private static TxtFileProcessing _txtfileprocessing;
+        //private static XMLDoter _xmlfileProcessing;
+
+        private static Storages.Storage storage { get; set; }
+
+
+
+        private static StorageEnum _storageType;
+
+        public static StorageEnum DataStorage
+        {
+            get
+            {
+                return _storageType;
+            }
+            set
+            {
+                _storageType = value;
+
+                _storageFilePath = @"C:\Users\Zhenya\source\repos\Doters\doters\Doters\Doters\doters.txt";
+                _xmlfilepath = @"C:\Users\Zhenya\source\repos\Doters\doters\Doters\Doters\doters.xml";
+
+                switch (_storageType)
+                {
+                    case StorageEnum.XML:
+                        storage = new XMLDoter(_xmlfilepath);
+                        break;
+                    case StorageEnum.Txt:
+                        storage = new TxtFileProcessing(_storageFilePath);
+                        break;
+                    case StorageEnum.Json:
+                        break;                   
+                }
+            }
+        }
+
+        public static StorageEnum DataSource { get; set; }
         private static string _xmlfilepath { get; set; }
 
         static DoterStorage()
         {
-            _storageFilePath = @"C:\Users\Zhenya\source\repos\Doters\doters\Doters\Doters\doters.txt";
+            DataSource = StorageEnum.Txt;
 
-            _txtfileprocessing = new TxtFileProcessing(_storageFilePath);
-            _xmlfilepath = @"C:\Users\Zhenya\source\repos\Doters\doters\Doters\Doters\doters.xml";
-            _xmlfileProcessing = new XMLDoter(_xmlfilepath);
+
+            //_txtfileprocessing = new TxtFileProcessing(_storageFilePath);
+            //_xmlfileProcessing = new XMLDoter(_xmlfilepath);
         }
 
 
@@ -43,31 +77,21 @@ namespace Doters
         {
 
             List<string> lines = new List<string>();
-            if (XmlOrTXT == false)
-            {
-                foreach (var doter in doters)
-                {
-                    lines.Add(doter.DoterCharacteristics());
 
-                }
-                _txtfileprocessing.AppendFile(rewrite, lines.ToArray());
-            }
-            if (XmlOrTXT)
+            List<Doter> lines1 = new List<Doter>();
+            foreach (var doter in doters)
             {
-                List<Doter> lines1 = new List<Doter>();
-                foreach (var doter in doters)
-                {
-                    lines1.Add(doter);                  
-                }
-                _xmlfileProcessing.DoterAddToXml(rewrite, lines1.ToArray());
+                lines1.Add(doter);
             }
+            storage.Append(rewrite, lines1.ToArray());
+
         }
 
         public static void RemoveDoter(params Doter[] doters)
         {
             List<Doter> allDoters = GetDoters();
 
-            for (int i = allDoters.Count-1; i != -1; i--)
+            for (int i = allDoters.Count - 1; i != -1; i--)
             {
                 foreach (var item in doters)
                 {
@@ -77,8 +101,8 @@ namespace Doters
                         break;
                     }
                 }
-               
-                   
+
+
                 //foreach (var item2 in allDoters)
                 //{
                 //    if (item == item2)
@@ -94,9 +118,9 @@ namespace Doters
         {
             List<Doter> allDoter = GetDoters();
 
-            for (int i = allDoter.Count-1; i != -1; i--)
+            for (int i = allDoter.Count - 1; i != -1; i--)
             {
-                if(allDoter[i].MMR != mmr)
+                if (allDoter[i].MMR != mmr)
                     allDoter.Remove(allDoter[i]);
             }
 
@@ -153,7 +177,7 @@ namespace Doters
 
         //public static void AddDoter(int mmr, int hours, string name, int games, int wins, int amount, bool addAmountDoters = false)
         //{
-           
+
         //    if (addAmountDoters)
         //    {
         //        List<string> lines = new List<string>();
@@ -255,16 +279,10 @@ namespace Doters
         {
             List<Doter> doters = new List<Doter>();
             List<string> rows = new List<string>();
-            if (XmlOrTXT == false)
-            {
-                TxtFileProcessing txtfileprocessing = new TxtFileProcessing(_storageFilePath);
-                rows = txtfileprocessing.GetAllFileLines();
-            }
-            else if (XmlOrTXT)
-            {
-                XMLDoter xmldoter = new XMLDoter(_xmlfilepath);
-                rows = xmldoter.GetLinesFromXML();
-            }
+
+            rows = storage.GetAllFileLines();
+
+
             foreach (var item in rows)
 
             {
