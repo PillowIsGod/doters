@@ -1,12 +1,5 @@
 <doters>
   <doter>
-    <mmr>1928</mmr>
-    <hours>66203</hours>
-    <name>DoterTestoviy 0</name>
-    <games>3668</games>
-    <wins>3188</wins>
-  </doter>
-  <doter>
     <mmr>8509</mmr>
     <hours>12527</hours>
     <name>DoterTestoviy 1</name>
@@ -26,5 +19,12 @@
     <name>DoterTestoviy 3</name>
     <games>5106</games>
     <wins>1850</wins>
+  </doter>
+  <doter>
+    <mmr>5000</mmr>
+    <hours>3000</hours>
+    <name>La</name>
+    <games>130</games>
+    <wins>15</wins>
   </doter>
 </doters>
