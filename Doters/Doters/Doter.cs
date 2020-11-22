@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -14,13 +15,21 @@ namespace Doters
         public string Name;
         public int Games;
         public int Wins;
+
+        [JsonIgnore]
         public double Winrate;
+
+        [JsonIgnore]
         public double MMRPH;
         public int Random(int firstnumber, int secondnumber)
         {
             Random rnd = new Random();
             int num = rnd.Next(firstnumber, secondnumber);
             return num;
+        }
+        public Doter()
+        {
+
         }
         public string DoterTry(int fileRow)
         {

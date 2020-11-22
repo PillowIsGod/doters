@@ -257,7 +257,7 @@ namespace Doters
 "Редактировать дотера", "All data to XML", "All data to JSon");
             }
             int generalchoice = GetUserResponse("What would you like to use as a data container: \n" +
-"1. Txt file 2. XML file", true, 1, 2, "Please, choose one of the options.");
+"1. Txt file 2. XML file 3. Json file", true, 1, 3, "Please, choose one of the options.");
 
 
             switch (generalchoice)

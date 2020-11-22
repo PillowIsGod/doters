@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Zhenya\\Desktop\\doters\\Doters\\Doters\\Doters.csproj": {}
+    "C:\\Users\\Zhenya\\source\\repos\\Doters\\doters\\Doters\\Doters\\Doters.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Zhenya\\Desktop\\doters\\Doters\\Doters\\Doters.csproj": {
+    "C:\\Users\\Zhenya\\source\\repos\\Doters\\doters\\Doters\\Doters\\Doters.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Zhenya\\Desktop\\doters\\Doters\\Doters\\Doters.csproj",
+        "projectUniqueName": "C:\\Users\\Zhenya\\source\\repos\\Doters\\doters\\Doters\\Doters\\Doters.csproj",
         "projectName": "Doters",
-        "projectPath": "C:\\Users\\Zhenya\\Desktop\\doters\\Doters\\Doters\\Doters.csproj",
+        "projectPath": "C:\\Users\\Zhenya\\source\\repos\\Doters\\doters\\Doters\\Doters\\Doters.csproj",
         "packagesPath": "C:\\Users\\Zhenya\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Zhenya\\Desktop\\doters\\Doters\\Doters\\obj\\",
+        "outputPath": "C:\\Users\\Zhenya\\source\\repos\\Doters\\doters\\Doters\\Doters\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Zhenya\\AppData\\Roaming\\NuGet\\NuGet.Config",

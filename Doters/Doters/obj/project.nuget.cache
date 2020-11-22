@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "w5MNK6VcDnc4uLFJfZbc2aWmdQbGWYoAQ8Q+om2H9LTKpijQOpa1EGsvSFfxLDYJ579Uo4FwggniygOEYPqITg==",
+  "dgSpecHash": "f4mH8dc4mAK/rKtrR5HZwuj23Rby8pFEese/7WmO7uA7a3VaSTTl400SWTeBpKbT0ZrngfW/LVeEuV5NV4PL3w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Zhenya\\Desktop\\doters\\Doters\\Doters\\Doters.csproj",
+  "projectFilePath": "C:\\Users\\Zhenya\\source\\repos\\Doters\\doters\\Doters\\Doters\\Doters.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Zhenya\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
   ],

@@ -14,6 +14,7 @@ namespace Doters
         private static Storages.Storage storage { get; set; }
 
 
+        private static string _jsonfilepath { get; set; }
 
         private static StorageEnum _storageType;
 
@@ -29,6 +30,7 @@ namespace Doters
 
                 _storageFilePath = @"C:\Users\Zhenya\source\repos\Doters\doters\Doters\Doters\doters.txt";
                 _xmlfilepath = @"C:\Users\Zhenya\source\repos\Doters\doters\Doters\Doters\doters.xml";
+                _jsonfilepath = @"C:\Users\Zhenya\source\repos\Doters\doters\Doters\Doters\JsonContent.json";
 
                 switch (_storageType)
                 {
@@ -39,6 +41,7 @@ namespace Doters
                         storage = new TxtFileProcessing(_storageFilePath);
                         break;
                     case StorageEnum.Json:
+                        storage = new JsonFile(_jsonfilepath);
                         break;                   
                 }
             }
@@ -130,10 +133,10 @@ namespace Doters
         {
             List<Doter> allDoter = GetDoters();
 
-            foreach (var item in allDoter)
+            for (int i = allDoter.Count - 1; i != -1; i--)
             {
-                if (item.Hours == hours)
-                    allDoter.Remove(item);
+                if (allDoter[i].Hours != hours)
+                    allDoter.Remove(allDoter[i]);
             }
 
             return allDoter;
@@ -142,10 +145,10 @@ namespace Doters
         {
             List<Doter> allDoter = GetDoters();
 
-            foreach (var item in allDoter)
+            for (int i = allDoter.Count - 1; i != -1; i--)
             {
-                if (item.Name == name)
-                    allDoter.Remove(item);
+                if (allDoter[i].Name != name)
+                    allDoter.Remove(allDoter[i]);
             }
 
             return allDoter;
@@ -154,10 +157,10 @@ namespace Doters
         {
             List<Doter> allDoter = GetDoters();
 
-            foreach (var item in allDoter)
+            for (int i = allDoter.Count - 1; i != -1; i--)
             {
-                if (item.Games == games)
-                    allDoter.Remove(item);
+                if (allDoter[i].Games != games)
+                    allDoter.Remove(allDoter[i]);
             }
 
             return allDoter;
@@ -166,10 +169,10 @@ namespace Doters
         {
             List<Doter> allDoter = GetDoters();
 
-            foreach (var item in allDoter)
+            for (int i = allDoter.Count - 1; i != -1; i--)
             {
-                if (item.Wins == wins)
-                    allDoter.Remove(item);
+                if (allDoter[i].Wins != wins)
+                    allDoter.Remove(allDoter[i]);
             }
 
             return allDoter;
